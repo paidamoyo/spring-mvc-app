@@ -13,15 +13,20 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'war'
 
 configurations.all {
     resolutionStrategy {
         force 'org.atteo:evo-inflector:1.0.1'
     }
 }
-jar {
+war {
     baseName = 'gs-accessing-mongodb-data-rest'
     version =  '0.1.0'
+}
+
+configurations {
+    providedRuntime
 }
 
 repositories {
@@ -35,9 +40,15 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.data:spring-data-mongodb")
     compile("org.springframework.data:spring-data-rest-webmvc")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testCompile("junit:junit")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '1.8'
+}
+
+task execute(type:JavaExec) {
+    main = "hello.Application"
+    classpath = sourceSets.main.runtimeClasspath
 }
