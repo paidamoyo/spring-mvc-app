@@ -3,3 +3,4 @@
 build/
 .gradle/
 spring-intro*
+spring-mvc-app*
