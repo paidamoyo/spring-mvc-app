@@ -23,4 +23,21 @@ public class Customer {
                 "Customer[id=%s, firstName='%s', lastName ='%s']",
                 id, firstName, lastName);
     }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }
