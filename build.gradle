@@ -3,20 +3,54 @@ buildscript {
         maven { url "http://repo.spring.io/libs-release" }
         mavenLocal()
         mavenCentral()
+        jcenter()
     }
+
     dependencies {
+        classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.5'
     }
+
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'war'
+apply plugin: 'cargo'
+
 
 war {
     baseName = 'gs-accessing-mongodb-data-rest'
     version =  '0.1.0'
 }
+
+cargo {
+
+    containerId = 'tomcat8x'
+    port = 9090
+
+    deployable {
+        file = war.archivePath
+        context = '/'
+    }
+
+    local {
+
+        output = file('build/output.log')
+        timeout = 60000
+
+        installer {
+            installUrl =  'http://www.poolsaboveground.com/apache/tomcat/tomcat-8/v8.0.9/bin/apache-tomcat-8.0.9.tar.gz'
+            downloadDir = file("${rootProject.buildDir}/download")
+            extractDir = file("${rootProject.buildDir}/extract")
+        }
+
+        containerProperties {
+            property 'cargo.tomcat.ajp.port', 9099
+        }
+    }
+}
+cargoRunLocal.dependsOn assemble
 
 configurations {
     providedRuntime
