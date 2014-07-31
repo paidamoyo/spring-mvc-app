@@ -30,10 +30,10 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web.1.1.4")
-    compile("org.springframework.data:spring-data-mongodb")
-    compile("org.springframework.data:spring-data-rest-webmvc")
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.springframework.boot:spring-boot-starter-web:1.1.4.RELEASE")
+    compile("org.springframework.data:spring-data-mongodb:1.5.1.RELEASE")
+    compile("org.springframework.data:spring-data-rest-webmvc:2.1.1.RELEASE")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:1.1.4.RELEASE")
     testCompile("junit:junit")
 }
 
