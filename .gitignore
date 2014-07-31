@@ -2,4 +2,5 @@
 build/
 .gradle/
 .java-version
+*.iws
 .DS_Store
