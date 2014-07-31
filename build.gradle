@@ -47,8 +47,3 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '1.8'
 }
-
-task execute(type:JavaExec) {
-    main = "hello.Application"
-    classpath = sourceSets.main.runtimeClasspath
-}
