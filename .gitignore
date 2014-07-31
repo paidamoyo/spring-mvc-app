@@ -1,7 +1,5 @@
-.idea/
 .build/
 build/
 .gradle/
-spring-mvc-app*
 .java-version
 .DS_Store
